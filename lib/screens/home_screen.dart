@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              /// TASKS CARD
+             
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: _buildCard(
