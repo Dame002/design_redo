@@ -7,92 +7,139 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F6FA),
-      appBar: AppBar(
-        title: const Text('Profile'),
-        centerTitle: true,
-        backgroundColor: const Color(0xFF4A90FF),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            // AVATAR + NAME
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: _cardDecoration(),
-              child: Column(
-                children: const [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Color(0xFF4A90FF),
-                    child: Text(
-                      'D',
-                      style: TextStyle(
-                        fontSize: 32,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+             
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 24),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF6C63FF), Color(0xFF4A90FF)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 12,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 3),
+                        image: const DecorationImage(
+                          image: AssetImage('assets/image/profil.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4)),
+                        ],
                       ),
                     ),
-                  ),
-                  SizedBox(height: 12),
-                  Text(
-                    'Baay Dame',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                    const SizedBox(height: 12),
+                    const Text(
+                      'Baay Dame',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    'dame@email.com',
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                    const SizedBox(height: 4),
+                    const Text(
+                      'dameseck207@gmail.com',
+                      style: TextStyle(color: Colors.white70, fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+          
+              Row(
+                children: [
+                  _statCard('Tasks', '12', Colors.purpleAccent),
+                  const SizedBox(width: 12),
+                  _statCard('Progress', '75%', Colors.blueAccent),
                 ],
               ),
-            ),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 24),
 
-         
-            Row(
-              children: [
-                _statCard('Tasks', '12'),
-                const SizedBox(width: 12),
-                _statCard('Progress', '75%'),
-              ],
-            ),
+             
+              Container(
+                decoration: _cardDecoration(),
+                child: Column(
+                  children: const [
+                    _ProfileItem(icon: Icons.edit, title: 'Edit Profile'),
+                    Divider(height: 1),
+                    _ProfileItem(icon: Icons.lock, title: 'Change Password'),
+                    Divider(height: 1),
+                    _ProfileItem(
+                      icon: Icons.logout,
+                      title: 'Logout',
+                      isDanger: true,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
-            const SizedBox(height: 20),
-
-            
-            Container(
-              decoration: _cardDecoration(),
-              child: Column(
-                children: const [
-                  _ProfileItem(
-                    icon: Icons.edit,
-                    title: 'Edit Profile',
-                  ),
-                  Divider(height: 1),
-                  _ProfileItem(
-                    icon: Icons.lock,
-                    title: 'Change Password',
-                  ),
-                  Divider(height: 1),
-                  _ProfileItem(
-                    icon: Icons.logout,
-                    title: 'Logout',
-                    isDanger: true,
-                  ),
-                ],
+  
+  Widget _statCard(String title, String value, Color color) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+                color: color.withOpacity(0.15),
+                blurRadius: 12,
+                offset: const Offset(0, 6)),
+          ],
+        ),
+        child: Column(
+          children: [
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: color,
               ),
             ),
+            const SizedBox(height: 6),
+            Text(title),
           ],
         ),
       ),
     );
   }
 
+ 
   static BoxDecoration _cardDecoration() {
     return BoxDecoration(
       color: Colors.white,
@@ -106,30 +153,8 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
-
-  Widget _statCard(String title, String value) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: _cardDecoration(),
-        child: Column(
-          children: [
-            Text(
-              value,
-              style: const TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF4A90FF),
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(title),
-          ],
-        ),
-      ),
-    );
-  }
 }
+
 
 class _ProfileItem extends StatelessWidget {
   final IconData icon;
@@ -145,10 +170,10 @@ class _ProfileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, color: isDanger ? Colors.red : Colors.black),
+      leading: Icon(icon, color: isDanger ? Colors.red : Colors.black87),
       title: Text(
         title,
-        style: TextStyle(color: isDanger ? Colors.red : Colors.black),
+        style: TextStyle(color: isDanger ? Colors.red : Colors.black87),
       ),
       trailing: const Icon(Icons.chevron_right),
       onTap: () {},

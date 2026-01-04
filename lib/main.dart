@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'screens/home_screen.dart';
 import 'screens/profile_screen.dart';
 import 'screens/settings_screen.dart';
@@ -39,10 +40,7 @@ class _MainLayoutState extends State<MainLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _screens),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         selectedItemColor: const Color(0xFF6C63FF),
@@ -53,14 +51,8 @@ class _MainLayoutState extends State<MainLayout> {
           });
         },
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
