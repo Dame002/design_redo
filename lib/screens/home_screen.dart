@@ -14,7 +14,10 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'Home',
-          style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
         ),
       ),
 
@@ -23,6 +26,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
                 child: Column(
@@ -39,7 +43,10 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: 6),
                     Text(
                       "Here's what's happening today:",
-                      style: TextStyle(color: Colors.white70, fontSize: 14),
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
                     ),
                   ],
                 ),
@@ -73,6 +80,7 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
+              
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: _buildCard(
@@ -100,7 +108,7 @@ class HomeScreen extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: 0.75,
                           strokeWidth: 6,
-                          backgroundColor: Colors.grey.shade200,
+                          backgroundColor: Colors.grey,
                           color: Color(0xFF4A90FF),
                         ),
                       ),
@@ -111,29 +119,27 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
+            
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFEEF2FF),
-                      elevation: 0,
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 14,
-                        horizontal: 22,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFEEF2FF),
+                    elevation: 0,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 14,
+                      horizontal: 22,
                     ),
-                    child: const Text(
-                      'View More Details',
-                      style: TextStyle(
-                        color: Color(0xFF6C63FF),
-                        fontWeight: FontWeight.bold,
-                      ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'View More Details',
+                    style: TextStyle(
+                      color: Color(0xFF6C63FF),
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -143,20 +149,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        selectedItemColor: const Color(0xFF6C63FF),
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
       ),
     );
   }
@@ -178,6 +170,7 @@ class HomeScreen extends StatelessWidget {
       child: child,
     );
   }
+
 
   Widget _taskItem(String text, Color color) {
     return Padding(
